@@ -24,35 +24,37 @@
 
 
 <!--    Search/Add Box     -->
-				<div class="form-group searchBox">
-					<label for="movieTitle">Movie Title</label>
-	
-						<input id="movieTitle" class="form-control" type="text" placeholder="Movie Name">
-					</br>
-						<input type="button" class="subTitle btn btn-default" value="Search">
-	</br>
-	</br>
-					<div id="searchResult">
-						<label for="year">Year</label>
-						<input type="text" name="year" id="year"> 
+				<form class="addBox">
+					<div class="form-group searchBox">
+						<label for="movieTitle">Movie Title</label>
+
+							<input id="movieTitle" class="form-control" type="text" placeholder="Movie Name">
 						</br>
-						</br>
-						<label for="actors">Actors</label>
-						<input type="text" name="actors" id="actors">   
+							<input type="button" class="subTitle btn btn-default" value="Search">
+		</br>
+		</br>
+						<div id="searchResult">
+							<label for="year">Year</label>
+							<input type="text" name="year" id="year"> 
+							</br>
+							</br>
+							<label for="actors">Actors</label>
+							<input type="text" name="actors" id="actors">   
+						</div>
+							<br>
+						<label for="ratingSystem">Rating System (1-10)</label>
+							<br>
+						<form>
+							<input type="range" name="amountRange" min="0" max="10" value="0" oninput="this.form.amountInput.value=this.value" />
+							</br>
+				<input type="number" name="amountInput" min="0" max="10" value="0" oninput="this.form.amountRange.value=this.value" class="ratingRange"/>
+						</form>
+		</br>
+					<div class="addMovieSubmit">
+							<button type="submit" class="addMovies btn btn-success">Submit</button>
 					</div>
-						<br>
-					<label for="ratingSystem">Rating System (1-10)</label>
-						<br>
-					<form>
-						<input type="range" name="amountRange" min="0" max="10" value="0" oninput="this.form.amountInput.value=this.value" />
-						</br>
-			<input type="number" name="amountInput" min="0" max="10" value="0" oninput="this.form.amountRange.value=this.value" class="ratingRange"/>
-					</form>
-	</br>
-				<div class="addMovieSubmit">
-						<button type="submit" class="addMovies btn btn-success">Submit</button>
 				</div>
-			</div>
+			</form>
   	<footer></footer>
   	<script data-main="javascripts/main" src="/bower_components/requirejs/require.js"></script>
 	</body>
