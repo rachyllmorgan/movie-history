@@ -57,15 +57,17 @@ requirejs(
 		}
 		
 	$(".addMovies").click(function(){
-		
+
 		// Created var for movie
 				var newMovie = {
 					"Title": $("#movieTitle").val(),
 					"Year": $("#year").val(),
 					"Actors": $("#actors").val(),
 					"Rating": $("input.ratingRange").val(),
+					"Viewed": $("input[type='radio']").val(),
 					};
 			console.log("Added Rating: ", newMovie);
+			console.log("Added Viewing: ", newMovie);
 		
 			// send to FireBase
 					
