@@ -32,15 +32,16 @@ requirejs(
     });
 
     function loadMovies(movies) {
-      require(['hbs!../templates/movie-list'], function(template) {
+      require(['hbs!../templates/movie-list'], 						function(template) {
         $("#movie-list").html(template(movies));
         $("[name='viewed']").bootstrapSwitch();
-        $(".bootstrap-switch-handle-on").text("Yes!");
-        $(".bootstrap-switch-handle-off").text("No");
+				$(".bootstrap-switch-handle-on").text("Yes!");
+				$(".bootstrap-switch-handle-off").text("No");
+					});
         console.log("loadMovies function called");
-      });
-
-    }
+		}
+ 
+		
 // Get OMDB API movie info
     
   function getMovie(title) {
@@ -76,7 +77,7 @@ requirejs(
 					"Year": $("#year").val(),
 					"Actors": $("#actors").val(),
 					"Rating": $("input.ratingRange").val(),
-					"Viewed": $("input[type='radio']").val(),
+					"Viewed": $("input[type=radio]:checked").val(),
 					};
 		
 				console.log("Added Rating: ", newMovie);
@@ -89,7 +90,6 @@ requirejs(
 			data: JSON.stringify(newMovie)
       }).done(function(addedMovie) {
 				console.log(addedMovie);
-				$("form").reset();
 				});
 				});
 	
@@ -101,4 +101,5 @@ requirejs(
 			console.log("title", title);
 			console.log(getMovie(title));
     });
+		
 });

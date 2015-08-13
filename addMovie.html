@@ -45,8 +45,6 @@
             </br>
             <label for="ratingSystem">Rating System (1-10)</label>
             </br>
-
-            
                 <input type="range" name="amountRange" min="0" max="10" value="0" oninput="this.form.amountInput.value=this.value" />
                 </br>
                 <input type="number" name="amountInput" min="0" max="10" value="0" oninput="this.form.amountRange.value=this.value" class="ratingRange"/>
@@ -54,8 +52,8 @@
             </br>
 						<div class="viewed">
 							<label for="viewed">Have you viewed this before?</label>
-								<input type="radio" value="Yes" name="check">Yes
-								<input type="radio" value="Yes" name="check">No</br>
+								<input type="radio" id="yesView" value="Yes" name="check">Yes
+								<input type="radio" id="noView" value="No" name="check">No</br>
 						</div>
 						</br>
             <div class="addMovieSubmit">
