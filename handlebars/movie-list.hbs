@@ -2,7 +2,10 @@
   <div class='movieItem'>
     <h2>{{Title}}<h2> <h3>({{Year}})</h3> 
     <p>{{Actors}}</p>
-    <p>Rating Out of 10: {{Rating}}</p> 
+    <p>Rating Out of 10: {{rating}}</p>
+    <input class="rating" data-max="10" data-min="1" id="some_id" name="your_awesome_parameter" type="number" />
+    <i class='glyphicon glyphicon-star'></i><i class='glyphicon glyphicon-star'></i><i class='glyphicon glyphicon-star'></i><i class='glyphicon glyphicon-star-empty'></i><i class='glyphicon glyphicon-star-empty'></i>
+
     <input type="checkbox" name="viewed" checked>
     <!--  $("[name='viewed']").bootstrapSwitch();  -->
     <input type='button' value='delete' class='delete'>

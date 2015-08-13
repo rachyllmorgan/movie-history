@@ -6,11 +6,13 @@ requirejs.config({
 		'firebase': '../bower_components/firebase/firebase',
     'hbs': '../bower_components/require-handlebars-plugin/hbs',
     'bootstrap': '../bower_components/bootstrap/dist/js/bootstrap.min',
-    'bootstrap-switch': '../bower_components/bootstrap-switch/dist/js/bootstrap-switch.min'
+    'bootstrap-switch': '../bower_components/bootstrap-switch/dist/js/bootstrap-switch.min',
+    'rating2' : '../bower_components/bootstrap-rating-input/build//bootstrap-rating-input.min'
   },
   shim: {
     'bootstrap': ['jquery'],
     'bootstrap-switch': ['bootstrap'],
+    'rating2': ['bootstrap'],
 		'firebase': {
 			exports: 'Firebase'
 		}
@@ -18,8 +20,8 @@ requirejs.config({
 });
 
 requirejs(
-["jquery", "lodash", "firebase", "hbs", "bootstrap", "addMovies", "bootstrap-switch", "deleteButton"],
-	function ($, _, _firebase, Handlebars, bootstrap, addMovies, bootstrapSwitch, deleteButton) {
+["jquery", "lodash", "firebase", "hbs", "bootstrap", "addMovies", "bootstrap-switch", "deleteButton", "rating2"],
+	function ($, _, _firebase, Handlebars, bootstrap, addMovies, bootstrapSwitch, deleteButton, rating2) {
 		
 		var myFirebaseRef = new Firebase("https://movie-history-cpr.firebaseio.com/");
 		var movies;
@@ -75,10 +77,26 @@ requirejs(
 					"Title": $("#movieTitle").val(),
 					"Year": $("#year").val(),
 					"Actors": $("#actors").val(),
-					"Rating": $("input.ratingRange").val(),
+					"Rating": $("input.rating").val(),
 					};
 			console.log("Added Rating: ", newMovie);
 		
+    // Adding Star Rating
+
+    $('.rating').rating();
+
+     $('input').on('change', function (e) {
+       var userRating = $(this).attr('value');
+     // Capture a variable that gets title/key
+     var ratingTitle = $(this).parent().parent().siblings('h2').html();
+      console.log(ratingTitle);
+      console.log("allMovies :", allMovies);
+     var titleKey = _.findKey(allMovies, {'Title': ratingTitle});
+      console.log(titleKey);
+       var ref = new Firebase('https://movie-history-cpr.firebaseio.com/' + titleKey);
+         ref.update({rating: userRating});
+     });
+
 			// send to FireBase
 					
 			$.ajax({
@@ -88,7 +106,11 @@ requirejs(
       }).done(function(addedMovie) {
 				console.log(addedMovie);
 				});
-				});
+				
+
+
+
+        });
 	
 		// Search button
 		
@@ -97,4 +119,9 @@ requirejs(
 			console.log("title", title);
 			console.log(getMovie(title));
     });
+
+
+
+
 });
+
