@@ -26,7 +26,7 @@
     </header>
 
     <!--    Search/Add Box     -->
-    <form class="addBox">
+			<form>
         <div class="form-group searchBox">
             <label for="movieTitle">Movie Title</label>
 
@@ -46,11 +46,10 @@
             <label for="ratingSystem">Rating System (1-10)</label>
             </br>
 
-            <form>
+            
                 <input type="range" name="amountRange" min="0" max="10" value="0" oninput="this.form.amountInput.value=this.value" />
                 </br>
-                <input type="number" name="amountInput" min="0" max="10" value="0" oninput="this.form.amountRange.value=this.value" class="ratingRange" />
-            </form>
+                <input type="number" name="amountInput" min="0" max="10" value="0" oninput="this.form.amountRange.value=this.value" class="ratingRange"/>
             </br>
             </br>
 						<div class="viewed">
@@ -60,10 +59,10 @@
 						</div>
 						</br>
             <div class="addMovieSubmit">
-                <button type="submit" class="addMovies btn btn-success">Submit</button>
+                <button class="addMovies btn btn-success" >Submit</button>
             </div>
         </div>
-    </form>
+			</form>
     <footer></footer>
     <script data-main="javascripts/main" src="/bower_components/requirejs/require.js"></script>
 </body>

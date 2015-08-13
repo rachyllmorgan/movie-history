@@ -69,7 +69,7 @@ requirejs(
   });  
 		
 	$(".addMovies").click(function(){
-
+		event.preventDefault();
 		// Created var for movie
 				var newMovie = {
 					"Title": $("#movieTitle").val(),
@@ -78,10 +78,10 @@ requirejs(
 					"Rating": $("input.ratingRange").val(),
 					"Viewed": $("input[type='radio']").val(),
 					};
-			console.log("Added Rating: ", newMovie);
-			console.log("Added Viewing: ", newMovie);
 		
-			// send to FireBase
+				console.log("Added Rating: ", newMovie);
+		
+		// send to FireBase
 					
 			$.ajax({
         url: "https://movie-history-cpr.firebaseio.com/movies.json",
@@ -89,6 +89,7 @@ requirejs(
 			data: JSON.stringify(newMovie)
       }).done(function(addedMovie) {
 				console.log(addedMovie);
+				$("form").reset();
 				});
 				});
 	
@@ -96,6 +97,7 @@ requirejs(
 		
 		$(".subTitle").on("click", function(){
 			var title = $("#movieTitle").val();
+			event.preventDefault();
 			console.log("title", title);
 			console.log(getMovie(title));
     });
